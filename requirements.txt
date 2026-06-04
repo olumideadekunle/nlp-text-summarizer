@@ -1,6 +1,5 @@
-streamlit
 transformers
 torch
 nltk
-scikit-learn
-sentencepiece
+rouge-score
+tqdm
