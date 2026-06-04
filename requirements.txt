@@ -1,5 +1,8 @@
 transformers
 torch
 nltk
+scikit-learn
+streamlit
 rouge-score
 tqdm
+numpy
