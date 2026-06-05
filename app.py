@@ -17,6 +17,7 @@ with tab1:
                 result = extractive_summary(text, num_sentences)
             st.subheader("Extractive Summary")
             st.write(result)
+            export_to_csv([{"OriginalText": text, "ExtractiveSummary": result}])
         else:
             st.warning("Please enter some text.")
 
