@@ -1,5 +1,5 @@
 import streamlit as st
-from summarizer import extractive_summary, abstractive_summary
+from summarizer import extractive_summary, abstractive_summary, export_to_csv
 
 st.set_page_config(page_title="NLP Text Summarizer", layout="centered")
 st.title("NLP Text Summarizer")
@@ -30,5 +30,6 @@ with tab2:
                 result = abstractive_summary(text, int(max_len), int(min_len))
             st.subheader("Abstractive Summary")
             st.write(result)
+            export_to_csv([{"OriginalText": text, "AbstractiveSummary": result}])
         else:
             st.warning("Please enter some text.")

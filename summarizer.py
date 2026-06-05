@@ -1,4 +1,5 @@
 import nltk
+import pandas as pd
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -35,3 +36,7 @@ def abstractive_summary(text: str, max_length: int = 130, min_length: int = 30) 
     inputs = _tokenizer(text, return_tensors="pt", max_length=1024, truncation=True)
     ids = _model.generate(inputs["input_ids"], max_length=max_length, min_length=min_length, length_penalty=2.0, num_beams=4)
     return _tokenizer.decode(ids[0], skip_special_tokens=True)
+
+def export_to_csv(records: list, path: str = "output.csv"):
+    pd.DataFrame(records).to_csv(path, index=False)
+    print(f"Results saved to {path}")
